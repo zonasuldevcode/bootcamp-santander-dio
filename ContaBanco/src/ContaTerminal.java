@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 /**
 * <h1>ContaTerminal</h1>
@@ -19,7 +20,7 @@ public class ContaTerminal {
     public double saldo;
 
     public static void main(String[] args) throws Exception {
-
+        try{
         ContaTerminal ct = new ContaTerminal();
         Scanner scanner = new Scanner(System.in);
 
@@ -34,15 +35,25 @@ public class ContaTerminal {
 
         System.out.println("Informe o Saldo:");
         ct.saldo = scanner.nextDouble();
-
-        
-
         System.out.println("Olá:" + ct.nomeCliente + "," +
                 "obrigado por criar uma conta em nosso banco, sua agência é:" + ct.agencia + "\n"
                 + "Conta:" + ct.numero +
                 " e seu saldo:" + " "
                 + ct.saldo + " " +
                 "Já está Disponível para saque");
+                scanner.close();;
+
+        }
+
+        catch(InputMismatchException e){
+
+            System.err.println("O numero da conta deve ser composto de valores inteiros");
+
+        }
+
+        
+
+        
 
     }
 
